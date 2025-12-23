@@ -1,4 +1,6 @@
+import 'package:eshop/controllers/popular_product_controller.dart';
 import 'package:eshop/pages/home/food_page_body.dart';
+import 'package:eshop/utils/app_constants.dart';
 import 'package:eshop/utils/dimensions.dart';
 import 'package:eshop/widgets/app_column.dart';
 import 'package:eshop/widgets/app_icon.dart';
@@ -15,10 +17,12 @@ import 'package:get/get.dart';
 
 import '../home/main_food_page.dart';
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({super.key});
+  int pageId;
+  PopularFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -33,8 +37,8 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    "assets/image/food0.png"
+                  image: NetworkImage(
+                    AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!
                   )
                 )
               ),
@@ -83,14 +87,14 @@ class PopularFoodDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppColumn(text: "Chinese Side"),
+                  AppColumn(text: product.name!),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: "Introduce"),
                   SizedBox(height: Dimensions.height10),
                   Expanded(
                     child: SingleChildScrollView(
                       child: ExpandableTextWidget(
-                        text: "Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!), fresh coriander/cilantro, then par boled lightly spiced rice.Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!"
+                        text: product.description!
                       ),
                     ),
                   )

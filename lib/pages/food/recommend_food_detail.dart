@@ -5,6 +5,9 @@ import 'package:eshop/widgets/big_text.dart';
 import 'package:eshop/widgets/expandable_text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../routes/route_helper.dart';
 
 class RecommendFoodDetail extends StatelessWidget {
   const RecommendFoodDetail({super.key});
@@ -21,7 +24,12 @@ class RecommendFoodDetail extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: AppIcon(icon: Icons.clear)
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
