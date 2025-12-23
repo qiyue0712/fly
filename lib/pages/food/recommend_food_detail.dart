@@ -1,3 +1,5 @@
+import 'package:eshop/controllers/recommended_product_controller.dart';
+import 'package:eshop/utils/app_constants.dart';
 import 'package:eshop/utils/colors.dart';
 import 'package:eshop/utils/dimensions.dart';
 import 'package:eshop/widgets/app_icon.dart';
@@ -10,10 +12,12 @@ import 'package:get/get.dart';
 import '../../routes/route_helper.dart';
 
 class RecommendFoodDetail extends StatelessWidget {
-  const RecommendFoodDetail({super.key});
+  final int pageId;
+  const RecommendFoodDetail({super.key, required this.pageId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -36,7 +40,7 @@ class RecommendFoodDetail extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(60),
               child: Container(
-                child: Center(child: BigText(size: Dimensions.font26 ,text: "Chinese side")),
+                child: Center(child: BigText(size: Dimensions.font26 ,text: product.name!)),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -52,8 +56,8 @@ class RecommendFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/food0.png",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               )
@@ -63,7 +67,7 @@ class RecommendFoodDetail extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child: ExpandableTextWidget(text:"Chicken marinated in a special yoghurt is placed in a large pot, Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a spChicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,ecial yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!), fresh coriander/cilantro, then par boled lightly spiced rice.Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!"),
+                  child: ExpandableTextWidget(text: product.description!),
                   margin: EdgeInsets.only(left: Dimensions.width20, right:  Dimensions.width20),
                 )
               ],
@@ -91,7 +95,7 @@ class RecommendFoodDetail extends StatelessWidget {
                   icon: Icons.remove
                 ),
                 BigText(
-                  text: "\$12.88 "+" X "+" 0",
+                  text: "\$ ${product.price!} X  0",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
@@ -149,7 +153,7 @@ class RecommendFoodDetail extends StatelessWidget {
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: AppColors.mainColor
                   ),
-                  child: BigText(text: "\$10 | Add to cart", color: Colors.white),
+                  child: BigText(text: "\$ ${product.price!} | Add to cart", color: Colors.white),
                 )
               ],
             ),

@@ -100,6 +100,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         SizedBox(height: Dimensions.height20),
+        // recommended food
         // list of food and images
         GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
           return recommendedProduct.isLoaded ? ListView.builder(
@@ -110,7 +111,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getRecommendedFood());
+                    Get.toNamed(RouteHelper.getRecommendedFood(index));
                   },
                   child: Container(
                     margin: EdgeInsets.only(
