@@ -1,4 +1,8 @@
 import 'package:eshop/utils/colors.dart';
+import 'package:eshop/utils/dimensions.dart';
+import 'package:eshop/widgets/app_icon.dart';
+import 'package:eshop/widgets/big_text.dart';
+import 'package:eshop/widgets/expandable_text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,16 +12,31 @@ class RecommendFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            toolbarHeight: 50,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(icon: Icons.clear),
+                AppIcon(icon: Icons.shopping_cart_outlined)
+              ],
+            ),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(0),
+              preferredSize: Size.fromHeight(60),
               child: Container(
-                color: Colors.white,
-                child: Text("Sliver app bar"),
+                child: Center(child: BigText(size: Dimensions.font26 ,text: "Chinese side")),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimensions.radius20),
+                    topRight: Radius.circular(Dimensions.radius20),
+                  )
+                ),
               ),
             ),
             pinned: true,
@@ -32,11 +51,101 @@ class RecommendFoodDetail extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Text(
-              "Chicken marinated in a special yoghurt is placed in a large pot, Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a spChicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,ecial yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!), fresh coriander/cilantro, then par boled lightly spiced rice.Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!"
-            ),
+            child: Column(
+              children: [
+                Container(
+                  child: ExpandableTextWidget(text:"Chicken marinated in a special yoghurt is placed in a large pot, Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a spChicken marinated in a special yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,ecial yoghurt is placed in a large pot,Chicken marinated in a special yoghurt is placed in a large pot,then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!), fresh coriander/cilantro, then par boled lightly spiced rice.Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!Chicken marinated in a special yoghurt is placed in a large pot, then layered with fried onions(cheeky easy sub below!"),
+                  margin: EdgeInsets.only(left: Dimensions.width20, right:  Dimensions.width20),
+                )
+              ],
+            )
           )
         ]
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.only(
+              left: Dimensions.width20 * 2.5,
+              right: Dimensions.width20 * 2.5,
+              top: Dimensions.height10,
+              bottom: Dimensions.height10,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(
+                  iconSize: Dimensions.iconSize24,
+                  iconColor: Colors.white,
+                  backgroundColor: AppColors.mainColor,
+                  icon: Icons.remove
+                ),
+                BigText(
+                  text: "\$12.88 "+" X "+" 0",
+                  color: AppColors.mainBlackColor,
+                  size: Dimensions.font26,
+                ),
+                AppIcon(
+                    iconSize: Dimensions.iconSize24,
+                    iconColor: Colors.white,
+                    backgroundColor: AppColors.mainColor,
+                    icon: Icons.add
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: Dimensions.bottomHeightBar,
+            padding: EdgeInsets.only(
+              top: Dimensions.height30,
+              bottom: Dimensions.height30,
+              left: Dimensions.width20,
+              right: Dimensions.width20,
+            ),
+            decoration: BoxDecoration(
+                color: AppColors.buttonBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimensions.radius20 * 2),
+                    topRight: Radius.circular(Dimensions.radius20 * 2)
+                )
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                    top: Dimensions.height20,
+                    bottom: Dimensions.height20,
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white
+                  ),
+                  child: Icon(
+                    Icons.favorite,
+                    color: AppColors.mainColor,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    top: Dimensions.height20,
+                    bottom: Dimensions.height20,
+                    left: Dimensions.width20,
+                    right: Dimensions.width20,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: AppColors.mainColor
+                  ),
+                  child: BigText(text: "\$10 | Add to cart", color: Colors.white),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
