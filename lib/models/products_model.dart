@@ -19,7 +19,7 @@ class Product {
     if ( json['products'] != null) {
       _products = <ProductModel>[];
       (json['products'] as List).forEach((v) {
-        _products!.add(ProductModel.formJson(v));
+        _products.add(ProductModel.formJson(v));
       });
     }
   }
