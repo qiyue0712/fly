@@ -16,6 +16,7 @@ class RecommendFoodDetail extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 50,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
